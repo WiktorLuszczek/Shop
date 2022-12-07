@@ -8,7 +8,7 @@ export default function Product () {
     const router = useRouter()
     if(query.data === undefined) return <h1>Weit a moment</h1>
     else{
-        const slug = router.query.slug[0]
+        const slug = router.query.slug[0] // nie wiem jak dostać się inaczej :D
         const {products} = query.data;
         const product = products.filter((product: SchemaProduct) => product.slug === slug)
         return(
