@@ -17,5 +17,5 @@
     "no-console": "warn",
     "@typescript-eslint/consistent-type-imports": "error"
   },
-  "ignorePatterns": ["vite.config.ts", "commitlint.config.js"]
+  "ignorePatterns": ["commitlint.config.js"]
 }
