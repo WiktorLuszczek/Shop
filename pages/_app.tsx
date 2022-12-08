@@ -4,14 +4,16 @@ import { ApolloProvider } from '@apollo/client'
 import client from '../lib/apollo-client'
 import { Layout } from '../components/Layout/Layout'
 import { Header } from '../components/Header/Header'
+import { Footer } from '../components/Footer/Footer'
 
 export default function App({ Component, pageProps }: AppProps) {
   return ( 
     <ApolloProvider client={client} >
+      <Header />
       <Layout >
-        <Header />
         <Component {...pageProps} />
       </Layout>
+      <Footer />
     </ApolloProvider>
   )
 }
