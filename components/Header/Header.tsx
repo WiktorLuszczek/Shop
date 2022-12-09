@@ -6,7 +6,7 @@ export function Header () {
     return (
         <>
             <Script src="https://kit.fontawesome.com/0912d2c3f4.js" crossOrigin="anonymous"></Script>
-            <header className="flex flex-row m-10">
+            <header className="flex flex-row p-10 bg-gray-100">
                 <div className="basis-1/2">
                     <Link href="/">
                         <h1 className="font-mono text-5xl ml-2">TIENDA|DE|ROPA</h1>
