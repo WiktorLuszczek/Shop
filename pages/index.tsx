@@ -4,14 +4,14 @@ import Link from 'next/link';
 import type { SchemaProduct } from '../schema/schema';
 import { GET_PRODUCTS } from '../lib/apollo-client';
 import { Card } from '../components/Card/Card';
+import { Spinner } from '../components/Spinner/Spinner';
 
 
 export default function Home() {
-  const query = useQuery(GET_PRODUCTS)
-  
-if(query.data === undefined) return <h1>Weit a moment</h1>
-else{
-  const {products} = query.data;
+  const {data, loading, error} = useQuery(GET_PRODUCTS)
+  if(error) return <h1>Error while downloading data</h1>
+  if(loading) return <Spinner />
+  const {products} = data;
   return (
     <div>
       <Head>
@@ -27,6 +27,5 @@ else{
       </div>
     </div>
   )
-}
 }
 
