@@ -14,6 +14,7 @@ export default function PageProduct () {
     const {products} = data;
     const product = products.find((product: SchemaProduct) => product.slug === slug[0])
     if(product === undefined) return <Spinner />
+    console.log(product)
     return(
         <Product product={product} />
     )
