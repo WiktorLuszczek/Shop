@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Script from "next/script";
 import { useState } from "react";
+import { OrderCard } from "../OrderCard/OrderCard";
 import { SearchInput } from "../SearchInput/SearchInput";
 
 export function Header () {
@@ -31,8 +32,9 @@ export function Header () {
                         <i id="toggle-button-baskets" className="text-5xl fa-regular fa-basket-shopping hover:text-gray-500"></i>
                     </button>
                 </div>
-                <div className={`${hidden} absolute w-96 h-3/4 bg-white top-36 right-2 opacity-95 border-2 border-gray-400 rounded-l`}>
-                    <h1 className="text-center m-4 text-2xl">Products in the basket</h1>
+                <div className={`${hidden} absolute w-96 h-3/4 bg-white top-36 right-2 border-2 border-gray-400 rounded-lg text-center`}>
+                    <OrderCard />
+                    <Link href={'/'} onClick={toggleOrderBox} className="bg-blue-400 px-5 py-2 rounded-xl">Go to basket with order</Link>
                 </div>
             </header>
         </>
