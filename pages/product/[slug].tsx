@@ -4,18 +4,23 @@ import { GET_PRODUCTS } from "../../lib/apollo-client";
 import type { SchemaProduct } from "../../schema/schema";
 import { Product } from "../../components/Product/Product";
 import { Spinner } from "../../components/Spinner/Spinner";
+import { useAssetsQuery } from "../../generated/graphql";
+
 
 export default function PageProduct () {
-    const {data, loading, error} = useQuery(GET_PRODUCTS)
+    const {data, loading, error} = useAssetsQuery()
     const router = useRouter()
     if(error) return <h1>Error while downloading data</h1>
     if(loading) return <Spinner />
     const {slug} = router.query
-    const {products} = data;
-    const product = products.find((product: SchemaProduct) => product.slug === slug[0])
+    if(data === undefined) return <Spinner />
+    console.log(data.products)
+    const product = data?.products.find((product) => product.slug === slug)
+    console.log('product', product)
     if(product === undefined) return <Spinner />
-    console.log(product)
+    
     return(
         <Product product={product} />
     )
 }
+
