@@ -12,6 +12,7 @@ export default function Home() {
   if(error) return <h1>Error while downloading data</h1>
   if(loading) return <Spinner />
   const {products} = data;
+  console.log(products)
   return (
     <div>
       <Head>
