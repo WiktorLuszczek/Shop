@@ -6,12 +6,12 @@ export const OrderCard = () => {
         {
             name: "Snapback",
             image: "https://media.graphassets.com/WkzdWzzoQSKTfCbHuYiW",
-            href: "product/snapback"
+            href: "snapback"
         },
         {
             name: "Unisex Long Sleeve Tee",
             image: "https://media.graphassets.com/6yRWKTngTCivgVzkmOMG",
-            href: "product/unisex-long-sleeve-tee"
+            href: "unisex-long-sleeve-tee"
         }
     ]
     return (
