@@ -6,7 +6,6 @@ export const Product = ({product} : {product: SchemaProduct}) => {
         e.preventDefault()
         console.log("add to card")
     }
-    console.log(product.images)
     return (
         <div className="grid grid-cols-3 gap-5">
                     <Image className="bg-gray-100 px-5 py-10 col-span-2 rounded-lg m-auto" src={product.images[0].url} alt="product photo"  width={600} height={600}></Image>

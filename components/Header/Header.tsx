@@ -28,13 +28,12 @@ export function Header () {
                     <i className="mx-1 text-5xl fa-brands fa-youtube"></i>
                 </div>
                 <div className="ml-20">
-                    <button onClick={toggleOrderBox}>
+                    <Link href={"/orderpage"} onMouseOver={toggleOrderBox} onMouseOut={toggleOrderBox}>
                         <i id="toggle-button-baskets" className="text-5xl fa-regular fa-basket-shopping hover:text-gray-500"></i>
-                    </button>
+                    </Link>
                 </div>
-                <div className={`${hidden} absolute w-96 h-3/4 bg-white top-36 right-2 border-2 border-gray-400 rounded-lg text-center`}>
+                <div className={`${hidden} absolute w-96 h-3/4 bg-white top-24 right-2 border-2 border-gray-400 rounded-lg text-center`}>
                     <OrderCard />
-                    <Link href={'/'} onClick={toggleOrderBox} className="bg-blue-400 px-5 py-2 rounded-xl">Go to basket with order</Link>
                 </div>
             </header>
         </>

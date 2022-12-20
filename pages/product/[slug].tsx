@@ -14,9 +14,7 @@ export default function PageProduct () {
     if(loading) return <Spinner />
     const {slug} = router.query
     if(data === undefined) return <Spinner />
-    console.log(data.products)
     const product = data?.products.find((product) => product.slug === slug)
-    console.log('product', product)
     if(product === undefined) return <Spinner />
     
     return(
