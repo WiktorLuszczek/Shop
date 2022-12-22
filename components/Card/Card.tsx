@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SchemaProduct } from "../../schema/schema";
+import { SchemaProductFromGraphQL } from "../../schema/schema";
 
-export function Card (props: {data: SchemaProduct}) {
+export function Card (props: {data: SchemaProductFromGraphQL}) {
     const {url} = props.data.images[0]
     return(
         <Link href={`product/${props.data.slug}`}>

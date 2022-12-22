@@ -1,7 +1,4 @@
-import { useQuery } from "@apollo/client"
 import { useRouter } from "next/router"
-import { GET_PRODUCTS } from "../../lib/apollo-client";
-import type { SchemaProduct } from "../../schema/schema";
 import { Product } from "../../components/Product/Product";
 import { Spinner } from "../../components/Spinner/Spinner";
 import { useAssetsQuery } from "../../generated/graphql";

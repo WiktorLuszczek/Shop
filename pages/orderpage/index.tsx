@@ -1,28 +1,22 @@
 import Image from "next/image"
+import { useContext } from "react"
+import { MyContext } from "../../lib/createContext"
+import { SchemaProduct } from "../../schema/schema"
 
 export default function OrderPage() {
-    const data = [
-        {
-            name: "Snapback",
-            image: "https://media.graphassets.com/WkzdWzzoQSKTfCbHuYiW",
-            description: "Get noticed with this casual snapback repping your favorite Headless CMS.",
-            href: "snapback",
-            amount: 1
-        },
-        {
-            name: "Unisex Long Sleeve Tee",
-            image: "https://media.graphassets.com/6yRWKTngTCivgVzkmOMG",
-            description: "Awesome GraphCMS Tshirt, available in a variety of colours, and super comfortable. Rep your favorite Headless CMS in style.",
-            href: "unisex-long-sleeve-tee",
-            amount: 2
-        }
-    ]
+    const contextValue = useContext(MyContext)?.contextValue
+    if(contextValue === undefined || contextValue === null || contextValue.length === 0) return(
+        <>
+            <h1 className="text-3xl font-bold">Bag</h1>
+            <p>You have no products in your shopping cart</p>
+        </>
+    )
     return (
         <div className="w-11/12 mx-auto flex">
             <div className="m-2 w-4/6">
                 <h1 className="text-3xl font-bold">Bag</h1>
                 <ul>
-                    {data.map((product, i) => 
+                    {contextValue.map((product: SchemaProduct, i: number) => 
                     <li key={i} className="flex border-b-2 border-gray-200 pb-4 my-5">
                         <Image className="inline-block bg-gray-100 mr-3" src={product.image} alt="product photo"  width={150} height={150}></Image>
                         <div className="ml-3">

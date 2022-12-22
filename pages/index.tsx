@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useQuery } from "@apollo/client";
 import Link from 'next/link';
-import type { SchemaProduct } from '../schema/schema';
+import type { SchemaProductFromGraphQL } from '../schema/schema';
 import { GET_PRODUCTS } from '../lib/apollo-client';
 import { Card } from '../components/Card/Card';
 import { Spinner } from '../components/Spinner/Spinner';
@@ -22,7 +22,7 @@ export default function Home() {
       <div className='my-12'>
         <h1 className='font-bold text-3xl my-5'>Products</h1>
         <div className='grid grid-cols-3 gap-10'>
-          {products.map((product: SchemaProduct, i: number) => <Card key={i} data={product}/>)}
+          {products.map((product: SchemaProductFromGraphQL, i: number) => <Card key={i} data={product}/>)}
         </div>
       </div>
     </div>

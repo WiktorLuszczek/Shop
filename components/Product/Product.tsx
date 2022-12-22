@@ -1,10 +1,25 @@
 import Image from "next/image";
-import { SchemaProduct } from "../../schema/schema";
+import { useContext } from "react";
+import { MyContext } from "../../lib/createContext";
+import { SchemaProduct, SchemaProductFromGraphQL } from "../../schema/schema";
 
-export const Product = ({product} : {product: SchemaProduct}) => {
+export const Product = ({product} : {product: SchemaProductFromGraphQL}) => {
+    const context = useContext(MyContext)
+    const contextValue = context?.contextValue
+    const setContextValue = context?.setContextValue
+    if(contextValue === undefined || setContextValue === undefined || contextValue === null) return alert("error in context")
     const addProduct = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log("add to card")
+        const data: SchemaProduct = {
+            name: product.name,
+            description: product.description,
+            id: product.id,
+            slug: product.slug,
+            image: product.images[0].url,
+            categories: product.categories[0].name,
+            amount: 1
+        } 
+        setContextValue([...contextValue, data]);
     }
     return (
         <div className="grid grid-cols-3 gap-5">
