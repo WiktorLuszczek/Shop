@@ -3,14 +3,21 @@ import { useContext } from "react";
 import { MyContext } from "../../lib/createContext";
 import { SchemaProduct, SchemaProductFromGraphQL } from "../../schema/schema";
 
-export const Product = ({product} : {product: SchemaProductFromGraphQL}) => {
+export const Product = ({product} : {product: SchemaProductFromGraphQL}) =>  {
     const context = useContext(MyContext)
     const contextValue = context?.contextValue
     const setContextValue = context?.setContextValue
-    if(contextValue === undefined || setContextValue === undefined || contextValue === null) return alert("error in context")
+    if(contextValue === undefined || setContextValue === undefined || contextValue === null) return <h1>Erorr in context</h1>
     const addProduct = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const data: SchemaProduct = {
+        let newContextValue;
+        if(contextValue.find(obj => obj.id === product.id)){
+            newContextValue = contextValue;
+            const index = newContextValue.findIndex(obj => obj.id === product.id)
+            newContextValue[index].amount++
+        }
+        else { 
+            const data: SchemaProduct = {
             name: product.name,
             description: product.description,
             id: product.id,
@@ -18,9 +25,12 @@ export const Product = ({product} : {product: SchemaProductFromGraphQL}) => {
             image: product.images[0].url,
             categories: product.categories[0].name,
             amount: 1
+            }
+        newContextValue = [...contextValue, data]
         }
-        const newContextValue = [...contextValue, data]
+        
         setContextValue(newContextValue);
+        alert('Product added from cart')
     }
     return (
         <div className="grid grid-cols-3 gap-5">

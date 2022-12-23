@@ -1,10 +1,11 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ButtonHTMLAttributes, useContext } from "react"
+import { ButtonHTMLAttributes, useContext, useState } from "react"
 import { MyContext } from "../../lib/createContext"
 import { SchemaProduct } from "../../schema/schema"
 
 export default function OrderPage() {
+    const [count, setCount] = useState(0)
     const contextValue = useContext(MyContext)?.contextValue
     const setContextValue = useContext(MyContext)?.setContextValue
     if(contextValue === undefined || contextValue === null || contextValue.length === 0 || setContextValue === undefined) return(
@@ -15,11 +16,14 @@ export default function OrderPage() {
     )
     const handleDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, index: number) => {
         e.preventDefault()
-        if(index !== -1){
-            const newContextValue = contextValue;
-            newContextValue.splice(index, 1)
-            setContextValue(newContextValue)
+        const newContextValue = contextValue;
+        if(index !== -1){   
+            newContextValue.splice(index, 1)   
         }
+        setContextValue(newContextValue)
+        alert('Product has been removed from the cart')
+        setCount(count+1)
+
     }
     return (
         <div className="w-11/12 mx-auto flex">
