@@ -9,7 +9,7 @@ import { useState } from 'react'
 import { MyContext } from '../lib/createContext'
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [contextValue, setContextValue] = useState(null)
+  const [contextValue, setContextValue] = useState([])
   return ( 
     <ApolloProvider client={client} >
       <MyContext.Provider value={{contextValue, setContextValue}}>
