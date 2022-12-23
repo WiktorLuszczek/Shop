@@ -18,8 +18,9 @@ export const Product = ({product} : {product: SchemaProductFromGraphQL}) => {
             image: product.images[0].url,
             categories: product.categories[0].name,
             amount: 1
-        } 
-        setContextValue([...contextValue, data]);
+        }
+        const newContextValue = [...contextValue, data]
+        setContextValue(newContextValue);
     }
     return (
         <div className="grid grid-cols-3 gap-5">

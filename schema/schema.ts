@@ -26,6 +26,6 @@ export type SchemaProduct = {
   categories: string
 }
 export type SchemaProductContext = null | {
-  contextValue: Array<SchemaProduct> | null,
-  setContextValue: Dispatch<SetStateAction<SchemaProduct>> | Dispatch<SetStateAction<never[]>>
+  contextValue: Array<SchemaProduct> | null
+  setContextValue: Dispatch<SetStateAction<SchemaProduct[]>> | Dispatch<SetStateAction<null>>
 }

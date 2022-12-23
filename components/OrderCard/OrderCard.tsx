@@ -7,7 +7,6 @@ import { SchemaProduct, SchemaProductContext } from "../../schema/schema"
 export const OrderCard = () => {
     const context = useContext(MyContext)
     const contextValue = context?.contextValue
-    console.log(contextValue)
     if(contextValue === null || contextValue === undefined || contextValue.length === 0) return (
         <>
             <h1 className="text-center m-4 text-3xl font-bold">Products in the basket</h1>
