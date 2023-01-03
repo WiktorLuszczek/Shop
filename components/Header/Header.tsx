@@ -1,14 +1,17 @@
 import Link from "next/link";
 import Script from "next/script";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { MyContext } from "../../context/createContext";
 import { OrderCard } from "../OrderCard/OrderCard";
 import { SearchInput } from "../SearchInput/SearchInput";
 
 export function Header () {
+    const order = useContext(MyContext)?.order
     const [hidden, setHidden] = useState('hidden')
     const toggleOrderBox = () => {
         setHidden(hidden === 'hidden' ? '' : 'hidden')
     }
+    if(order === null || order === undefined) return null && alert('error context')
     return (
         <>
             <Script src="https://kit.fontawesome.com/0912d2c3f4.js" crossOrigin="anonymous"></Script>
@@ -28,8 +31,9 @@ export function Header () {
                     <i className="mx-1 text-5xl fa-brands fa-youtube"></i>
                 </div>
                 <div className="ml-20">
-                    <Link href={"/orderpage"} onMouseOver={toggleOrderBox} onMouseOut={toggleOrderBox}>
-                        <i id="toggle-button-baskets" className="text-5xl fa-regular fa-basket-shopping hover:text-gray-500"></i>
+                    <Link href={"/orderpage"} className={'hover:text-gray-500'} onMouseOver={toggleOrderBox} onMouseOut={toggleOrderBox}>
+                        <i id="toggle-button-baskets" className="text-5xl fa-regular fa-basket-shopping"></i>
+                        {order.length === 0 ? null : <div className="absolute top-70px right-9 bg-white w-7 h-7 text-center rounded-full border-solid border-gray-500 border-2 hover:text-gray-500">{order.length}</div>}
                     </Link>
                 </div>
                 <div className={`${hidden} absolute w-96 h-3/4 bg-white top-24 right-2 border-2 border-gray-400 rounded-lg text-center`}>

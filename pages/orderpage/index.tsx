@@ -31,7 +31,7 @@ export default function OrderPage() {
                     <ul>
                         {order.map((product: SchemaProduct, i: number) =>
                         <li key={i} className="flex border-b-2 border-gray-200 pb-4 my-5">
-                            <Link href={`/product/${product.slug}`}><Image className="inline-block bg-gray-100 mr-3" src={product.image} alt="product photo"  width={150} height={150}></Image></Link>
+                            <Link href={`/product/${product.slug}`}><Image className="inline-block bg-gray-100 mr-3  rounded-lg" src={product.image} alt="product photo"  width={150} height={150}></Image></Link>
                             <div className="ml-3">
                                 <Link href={`/product/${product.slug}`}><span className="block my-2">{product.name}</span></Link>
                                 <span className="my-2 text-sm text-gray-500 block">{product.description}</span>
