@@ -6,18 +6,18 @@ import { Layout } from '../components/Layout/Layout'
 import { Header } from '../components/Header/Header'
 import { Footer } from '../components/Footer/Footer'
 import { useState } from 'react'
-import { MyContext } from '../lib/createContext'
+import { MyContext } from '../context/createContext'
+import { ContextProvider } from '../context/ContextProvider'
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [contextValue, setContextValue] = useState([])
   return ( 
     <ApolloProvider client={client} >
-      <MyContext.Provider value={{contextValue, setContextValue}}>
-        <Header />
-        <Layout >
-          <Component {...pageProps} />
-        </Layout>
-      </MyContext.Provider>
+        <ContextProvider>
+          <Header />
+          <Layout >
+            <Component {...pageProps} />
+          </Layout>
+        </ContextProvider>
       <Footer />
     </ApolloProvider>
   )

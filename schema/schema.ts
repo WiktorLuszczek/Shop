@@ -26,6 +26,8 @@ export type SchemaProduct = {
   categories: string
 }
 export type SchemaProductContext = null | {
-  contextValue: Array<SchemaProduct> | null
-  setContextValue: Dispatch<SetStateAction<SchemaProduct[]>> | Dispatch<SetStateAction<null>>
+  order: Array<SchemaProduct> | null,
+  addProduct: (product: SchemaProduct) => void,
+  deleteProduct: (index: number) => void,
+  changeAmount: (index: number, value: string) => void
 }
