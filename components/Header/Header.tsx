@@ -8,8 +8,11 @@ import { SearchInput } from "../SearchInput/SearchInput";
 export function Header () {
     const order = useContext(MyContext)?.order
     const [hidden, setHidden] = useState('hidden')
-    const toggleOrderBox = () => {
-        setHidden(hidden === 'hidden' ? '' : 'hidden')
+    const toggleOrderBoxOn = () => {
+        setHidden('')
+    }
+    const toggleOrderBoxOff = () => {
+        setHidden('hidden')
     }
     if(order === null || order === undefined) return null && alert('error context')
     return (
@@ -31,7 +34,7 @@ export function Header () {
                     <i className="mx-1 text-5xl fa-brands fa-youtube"></i>
                 </div>
                 <div className="ml-20">
-                    <Link href={"/orderpage"} className={'hover:text-gray-500'} onMouseOver={toggleOrderBox} onMouseOut={toggleOrderBox}>
+                    <Link href={"/orderpage"} className={'hover:text-gray-500'} onMouseOver={toggleOrderBoxOn} onMouseOut={toggleOrderBoxOff}>
                         <i id="toggle-button-baskets" className="text-5xl fa-regular fa-basket-shopping"></i>
                         {order.length === 0 ? null : <div className="absolute top-70px right-9 bg-white w-7 h-7 text-center rounded-full border-solid border-gray-500 border-2 hover:text-gray-500">{order.length}</div>}
                     </Link>
