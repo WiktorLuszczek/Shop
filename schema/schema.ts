@@ -23,7 +23,8 @@ export type SchemaProduct = {
   amount: number,
   id: string,
   slug: string,
-  categories: string
+  categories: string,
+  price: number
 }
 export type SchemaProductContext = null | {
   order: Array<SchemaProduct> | null,

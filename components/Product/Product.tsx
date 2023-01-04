@@ -13,7 +13,8 @@ export const Product = ({product} : {product: SchemaProductFromGraphQL}) =>  {
         slug: product.slug,
         image: product.images[0].url,
         categories: product.categories[0].name,
-        amount: 1
+        amount: 1,
+        price: product.price
     }
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
