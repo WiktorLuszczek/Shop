@@ -1,8 +1,8 @@
-import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal, useState } from "react"
+import { ReactFragment, useState } from "react"
 import { SchemaProduct } from "../schema/schema"
-import { MyContext } from "./createContext"
+import { OrderContext } from "./createContext"
 
-export const ContextProvider = (props: { children: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined }) => {
+export const ContextProvider = (props: { children: ReactFragment}) => {
     const [order, setOrder] = useState<SchemaProduct[]>([])
 
     const addProduct = (product: SchemaProduct) => {
@@ -34,13 +34,13 @@ export const ContextProvider = (props: { children: string | number | boolean | R
         setOrder(newOrder)
     }
     return (
-        <MyContext.Provider value={{
+        <OrderContext.Provider value={{
             order: order,
             addProduct: addProduct,
             deleteProduct: deleteProduct,
             changeAmount: changeAmount
             }}>
             {props.children}
-        </MyContext.Provider>
+        </OrderContext.Provider>
     )
 }

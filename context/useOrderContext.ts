@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { MyContext } from "./createContext";
+import { OrderContext } from "./createContext";
 
 export const useOrderContext = () => {
-    const orderContext = useContext(MyContext);
+    const orderContext = useContext(OrderContext);
     if (!orderContext) {
       throw new Error("Wrap components using CartContextProvider");
     }
