@@ -1,11 +1,10 @@
-import { useContext } from "react"
 import { ProductInOrder } from "../../components/ProductInOrder/ProductInOrder"
 import { SummaryOrder } from "../../components/SummaryOrder/SummaryOrder"
-import { MyContext } from "../../context/createContext"
+import { useOrderContext } from "../../context/useOrderContext"
 import { SchemaProduct } from "../../schema/schema"
 
 export default function OrderPage() {
-    const order = useContext(MyContext)?.order
+    const { order } = useOrderContext()
     if(order === undefined) return alert('error in context')
     return (
         <div className="w-11/12 mx-auto flex">

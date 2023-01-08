@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { useQuery } from "@apollo/client";
-import Link from 'next/link';
 import type { SchemaProductFromGraphQL } from '../schema/schema';
 import { GET_PRODUCTS } from '../utils/apollo-client';
 import { Card } from '../components/Card/Card';

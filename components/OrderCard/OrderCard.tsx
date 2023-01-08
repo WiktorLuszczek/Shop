@@ -1,11 +1,9 @@
-import { empty } from "@apollo/client"
 import Image from "next/image"
-import { use, useContext } from "react"
-import { MyContext } from "../../context/createContext"
+import { useOrderContext } from "../../context/useOrderContext"
 import { SchemaProduct, SchemaProductContext } from "../../schema/schema"
 
 export const OrderCard = () => {
-    const order = useContext(MyContext)?.order
+    const {order} = useOrderContext()
     if(order === null || order === undefined || order.length === 0) 
         return (
             <>

@@ -1,11 +1,10 @@
 import Image from "next/image";
 import { FormEvent, useContext } from "react";
-import { MyContext } from "../../context/createContext";
+import { useOrderContext } from "../../context/useOrderContext";
 import { SchemaProduct, SchemaProductFromGraphQL } from "../../schema/schema";
 
 export const Product = ({product} : {product: SchemaProductFromGraphQL}) =>  {
-    const context = useContext(MyContext)
-    const addProduct = context?.addProduct
+    const {addProduct} = useOrderContext()
     const data: SchemaProduct = {
         name: product.name,
         description: product.description,

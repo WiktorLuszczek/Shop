@@ -1,13 +1,11 @@
 import Link from "next/link";
-import { useContext, ChangeEvent } from "react";
-import { MyContext } from "../../context/createContext";
+import { ChangeEvent } from "react";
 import { SchemaProduct } from "../../schema/schema";
 import Image from "next/image";
+import { useOrderContext } from "../../context/useOrderContext";
 
 export const ProductInOrder = ({product, i} : {product: SchemaProduct, i:number}) => {
-    const deleteProduct = useContext(MyContext)?.deleteProduct
-    const changeAmount = useContext(MyContext)?.changeAmount
-    if(deleteProduct === undefined || changeAmount === undefined) return null && alert('error context')
+    const {deleteProduct, changeAmount} = useOrderContext()
     const handleDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, index: number) => {
         e.preventDefault();
         deleteProduct(index)

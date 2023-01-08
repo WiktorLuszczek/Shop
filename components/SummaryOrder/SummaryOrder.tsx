@@ -1,10 +1,8 @@
-import { useContext } from "react"
-import { MyContext } from "../../context/createContext"
+import { useOrderContext } from "../../context/useOrderContext"
 
 export const SummaryOrder = () => {
-    const order = useContext(MyContext)?.order
-    console.log(order)
-    if(order === null || order === undefined) return null && alert("error context")
+    const {order} = useOrderContext()
+    if(order === null) return null && alert("error context")
     const subtotal = () => {
         let price: number = 0;
         order.map(product => {
