@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FormEvent, useContext } from "react";
-import { useOrderContext } from "../../context/useOrderContext";
+import { useOrderContext } from "../../context/OrderContext";
 import { SchemaProduct, SchemaProductFromGraphQL } from "../../schema/schema";
 
 export const Product = ({product} : {product: SchemaProductFromGraphQL}) =>  {

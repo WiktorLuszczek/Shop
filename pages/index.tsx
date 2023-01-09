@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import { useQuery } from "@apollo/client";
 import type { SchemaProductFromGraphQL } from '../schema/schema';
-import { GET_PRODUCTS } from '../utils/apollo-client';
+import { GET_PRODUCTS } from '../apollo/apollo-client';
 import { Card } from '../components/Card/Card';
 import { Spinner } from '../components/Spinner/Spinner';
 
@@ -9,7 +9,7 @@ import { Spinner } from '../components/Spinner/Spinner';
 export default function Home() {
   const {data, loading, error} = useQuery(GET_PRODUCTS)
   if(error) return <h1>Error while downloading data</h1>
-  if(loading) return <Spinner />
+  if(loading) return 
   const {products} = data;
   return (
     <div>
@@ -19,10 +19,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className='my-12'>
-        <h1 className='font-bold text-3xl my-5'>Products</h1>
-        <div className='grid grid-cols-3 gap-10'>
-          {products.map((product: SchemaProductFromGraphQL, i: number) => <Card key={i} data={product}/>)}
-        </div>
+        {loading ? <Spinner /> :
+          <>
+            <h1 className='font-bold text-3xl my-5'>Products</h1>
+            <div className='grid grid-cols-3 gap-10'>
+              {products.map((product: SchemaProductFromGraphQL, i: number) => <Card key={i} data={product}/>)}
+            </div>
+          </>
+        }
       </div>
     </div>
   )

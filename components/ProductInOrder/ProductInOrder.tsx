@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ChangeEvent } from "react";
 import { SchemaProduct } from "../../schema/schema";
 import Image from "next/image";
-import { useOrderContext } from "../../context/useOrderContext";
+import { useOrderContext } from "../../context/OrderContext";
 
 export const ProductInOrder = ({product, i} : {product: SchemaProduct, i:number}) => {
     const {deleteProduct, changeAmount} = useOrderContext()

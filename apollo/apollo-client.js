@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 const client = new ApolloClient({
-    uri: "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clbc0ix0305qj01ujdqth4ltp/master",
+    uri: process.env.apolloURL,
     cache: new InMemoryCache(),
 });
 
