@@ -1,10 +1,12 @@
 import Image from "next/image";
-import { FormEvent, useContext } from "react";
+import { FormEvent, useContext, useState } from "react";
 import { useOrderContext } from "../../context/OrderContext";
 import { SchemaProduct, SchemaProductFromGraphQL } from "../../schema/schema";
+import { Modal } from "../Modal/Modal";
 
 export const Product = ({product} : {product: SchemaProductFromGraphQL}) =>  {
     const {addProduct} = useOrderContext()
+    const [showModal, setShowModal] = useState(false)
     const data: SchemaProduct = {
         name: product.name,
         description: product.description,
@@ -19,8 +21,11 @@ export const Product = ({product} : {product: SchemaProductFromGraphQL}) =>  {
         e.preventDefault();
         if(addProduct === undefined) return alert('error')
         addProduct(data)
+        setShowModal(!showModal)
     }
     return (
+        <>
+        {showModal && <Modal action={setShowModal} text="Product added to order"/>}
         <div className="grid grid-cols-3 gap-5">
             <Image className="bg-gray-100 px-5 py-10 col-span-2 rounded-lg m-auto" src={product.images[0].url} alt="product photo"  width={600} height={600}></Image>
             <div className="py-7">
@@ -32,5 +37,6 @@ export const Product = ({product} : {product: SchemaProductFromGraphQL}) =>  {
                 </form>
             </div>
         </div>
+        </>
     )
 }

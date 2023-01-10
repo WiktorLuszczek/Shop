@@ -16,7 +16,6 @@ export default function OrderContextProvider (props: { children: React.ReactNode
         newOrder = [...order, product]
       }
       setOrder(newOrder);
-      alert('Product added from cart')
     }
   
     const deleteProduct = (index: number) => {
@@ -25,7 +24,6 @@ export default function OrderContextProvider (props: { children: React.ReactNode
         newOrder.splice(index, 1)   
       }
       setOrder(newOrder)
-      alert('Product has been removed from the cart')
     }
   
     const changeAmount = (index: number, value: string) => {
