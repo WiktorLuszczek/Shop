@@ -9,7 +9,6 @@ import { Spinner } from '../components/Spinner/Spinner';
 export default function Home() {
   const {data, loading, error} = useQuery(GET_PRODUCTS)
   if(error) return <h1>Error while downloading data</h1>
-  if(loading) return 
   const {products} = data;
   return (
     <div>
