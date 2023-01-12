@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { FormEvent, useContext, useState } from "react";
-import { useOrderContext } from "../../context/OrderContext";
+import { useOrderContext } from "../../context/OrderContextProvider";
 import { SchemaProduct, SchemaProductFromGraphQL } from "../../schema/schema";
 import { Modal } from "../Modal/Modal";
 

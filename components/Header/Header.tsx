@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Script from "next/script";
 import { useState } from "react";
-import { useOrderContext } from "../../context/OrderContext";
+import { useOrderContext } from "../../context/OrderContextProvider";
 import { OrderCard } from "../OrderCard/OrderCard";
 import { SearchInput } from "../SearchInput/SearchInput";
 

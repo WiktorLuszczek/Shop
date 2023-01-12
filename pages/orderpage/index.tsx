@@ -1,6 +1,6 @@
 import { ProductInOrder } from "../../components/ProductInOrder/ProductInOrder"
 import { SummaryOrder } from "../../components/SummaryOrder/SummaryOrder"
-import { useOrderContext } from "../../context/OrderContext"
+import { useOrderContext } from "../../context/OrderContextProvider"
 import { SchemaProduct } from "../../schema/schema"
 
 export default function OrderPage() {

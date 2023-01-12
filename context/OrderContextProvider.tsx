@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { SchemaProduct } from "../schema/schema";
-import { OrderContext } from "./OrderContext";
+import { createContext, useContext, useState } from "react";
+import { SchemaProduct, SchemaProductContext } from "../schema/schema";
+
+export const OrderContext = createContext<SchemaProductContext>(null)
 
 export default function OrderContextProvider (props: { children: React.ReactNode}) {
     const [order, setOrder] = useState<SchemaProduct[]>([])
@@ -42,3 +43,13 @@ export default function OrderContextProvider (props: { children: React.ReactNode
         </OrderContext.Provider>
     )
   }
+
+
+
+export const useOrderContext = () => {
+  const orderContext = useContext(OrderContext);
+  if (!orderContext) {
+    throw new Error("Wrap components using CartContextProvider");
+  }
+  return orderContext;
+};

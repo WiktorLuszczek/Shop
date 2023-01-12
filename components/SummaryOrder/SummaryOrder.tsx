@@ -1,5 +1,4 @@
-import { useState } from "react"
-import { useOrderContext } from "../../context/OrderContext"
+import { useOrderContext } from "../../context/OrderContextProvider"
 
 export const SummaryOrder = () => {
     const {order} = useOrderContext()
