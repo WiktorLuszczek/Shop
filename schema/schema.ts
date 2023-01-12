@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import * as yup from "yup";
 
 export type SchemaProductFromGraphQL =
   { __typename?: string | undefined,
@@ -32,3 +32,15 @@ export type SchemaProductContext = null | {
   deleteProduct: (index: number) => void,
   changeAmount: (index: number, value: string) => void
 }
+
+export const formSchema = yup.object().shape({
+  name: yup
+    .string()
+    .min(3, "Name must have minimum 3 chars")
+    .max(64, "Name must have maximum 64 chars")
+    .required(),
+  email: yup
+    .string()
+    .email("Please enter the appropriate email address")
+    .required(),
+});
