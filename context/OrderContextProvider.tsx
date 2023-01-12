@@ -7,18 +7,20 @@ export default function OrderContextProvider (props: { children: React.ReactNode
     const [order, setOrder] = useState<SchemaProduct[]>([])
   
     const addProduct = (product: SchemaProduct) => {
-      let newOrder;
-      if(order.find(obj => obj.id === product.id)){
-        newOrder = order;
-        const index = newOrder.findIndex(obj => obj.id === product.id)
-        newOrder[index].amount++
+      if(order.find(item => item.id === product.id)){
+        const newOrder = order.map(item => {
+          if(item.id === product.id) {
+            item.amount++
+            return item
+          }
+          else return item
+        })
+        setOrder(newOrder)
       }
-      else { 
-        newOrder = [...order, product]
+      else {
+        setOrder([...order, product])
       }
-      setOrder(newOrder);
     }
-  
     const deleteProduct = (index: number) => {
       const newOrder = order;
       if(index !== -1){   
