@@ -7,21 +7,29 @@ import { Modal } from "../Modal/Modal"
 
 export const ProductInOrder = ({product, i} : {product: SchemaProduct, i:number}) => {
     const [showModal, setShowModal] = useState(false)
+    const [modalType, setModalType] = useState('')
     const {deleteProduct, changeAmount} = useOrderContext()
     const handleDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, index: number) => {
         e.preventDefault();
         deleteProduct(index)
         setShowModal(true)
+        setModalType('delete')
     }
     const handleAmount = (e: ChangeEvent<HTMLInputElement>,index: number) => {
         e.preventDefault();
         const value = e.target.value;
         changeAmount(index, value);
         setShowModal(true)
+        setModalType('amount')
+    }
+    const handleModal = () => {
+        if(modalType === 'delete') return <Modal action={setShowModal} text="Product has been removed from the order"/>
+        else if(modalType === 'amount') return <Modal action={setShowModal} text="The quantity of products in the order has been changed"/>
+        else null
     }
     return(
         <>
-            {showModal && <Modal action={setShowModal} text="Changes have been made to the order" />}
+            {showModal && handleModal()}
             <li key={i} className="flex border-b-2 border-gray-200 pb-4 my-5">
                 <Link href={`/product/${product.slug}`}><Image className="inline-block bg-gray-100 mr-3  rounded-lg" src={product.image} alt="product photo"  width={150} height={150}></Image></Link>
                 <div className="ml-3">
