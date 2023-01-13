@@ -8,26 +8,19 @@ export const Newsletter = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<{email: string}>({
     resolver: yupResolver(formSchema),
   });
-  const onSubmit = (data: {name: string, email: string}) => {
+  const onSubmit = (data: {email: string}) => {
     console.log(data)
   }
   return (
     <div className="text-center">
-      <div className="">Newsletter</div>
+      <div className="text-xl">Join our Newsletter</div>
         <form onSubmit={handleSubmit(onSubmit)}>
-
-          <input className="text-black block mx-auto m-1" type="name" placeholder="Name..." {...register("name")} />
-
-          <span className="">{errors?.name?.message}</span>
-
-          <input className="text-black block mx-auto m-1" type="text" placeholder="Email..." {...register("email")} />
-
-          <span className="">{errors?.email?.message}</span>
-
-          <input className="cursor-pointer" type="submit" id="submit" value="Subscribe!"/>
+          <input className="text-black block mx-auto m-1 px-2 rounded-lg" type="text" placeholder="Email..." {...register("email")} />
+          <span className="block">{errors?.email?.message}</span>
+          <input className="cursor-pointer bg-gray-50 text-black px-2 rounded-lg mt-2" type="submit" id="submit" value="Subscribe!"/>
         </form>
     </div>
   );
