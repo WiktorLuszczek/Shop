@@ -28,10 +28,10 @@ export function Header () {
                     <SearchInput />
                 </div>
                 <ul className="basis-1/4 text-right">
-                    <span className="mx-1 text-5xl fa-brands fa-facebook-f" />
-                    <span className="mx-1 text-5xl fa-brands fa-instagram" />
-                    <span className="mx-1 text-5xl fa-brands fa-twitter" />
-                    <span className="mx-1 text-5xl fa-brands fa-youtube" />
+                    <li className="inline"><span className="mx-1 text-5xl fa-brands fa-facebook-f" /></li>
+                    <li className="inline"><span className="mx-1 text-5xl fa-brands fa-instagram" /></li>
+                    <li className="inline"><span className="mx-1 text-5xl fa-brands fa-twitter" /></li>
+                    <li className="inline"><span className="mx-1 text-5xl fa-brands fa-youtube" /></li>
                 </ul>
                 <div className="ml-20">
                     <Link href={"/orderpage"} className={'hover:text-gray-500'} onMouseOver={toggleOrderBoxOn} onMouseOut={toggleOrderBoxOff}>
