@@ -28,10 +28,10 @@ export function Header () {
                     <SearchInput />
                 </div>
                 <ul className="basis-1/4 text-right">
-                    <li className="inline"><span className="mx-1 text-5xl fa-brands fa-facebook-f" /></li>
-                    <li className="inline"><span className="mx-1 text-5xl fa-brands fa-instagram" /></li>
-                    <li className="inline"><span className="mx-1 text-5xl fa-brands fa-twitter" /></li>
-                    <li className="inline"><span className="mx-1 text-5xl fa-brands fa-youtube" /></li>
+                    <li className="inline"><a href="http://www.facebook.com" target="_blank"><span className="mx-1 text-5xl fa-brands fa-facebook-f" /></a></li>
+                    <li className="inline"><a href="http://www.instagram.com" target="_blank"><span className="mx-1 text-5xl fa-brands fa-instagram" /></a></li>
+                    <li className="inline"><a href="http://www.twitter.com" target="_blank"><span className="mx-1 text-5xl fa-brands fa-twitter" /></a></li>
+                    <li className="inline"><a href="http://www.youtube.com" target="_blank"><span className="mx-1 text-5xl fa-brands fa-youtube" /></a></li>
                 </ul>
                 <div className="ml-20">
                     <Link href={"/orderpage"} className={'hover:text-gray-500'} onMouseOver={toggleOrderBoxOn} onMouseOut={toggleOrderBoxOff}>

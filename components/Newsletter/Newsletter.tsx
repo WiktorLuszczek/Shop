@@ -5,7 +5,7 @@ import { formSchema } from "../../schema/schema";
 import { Modal } from "../Modal/Modal";
 
 export const Newsletter = () => {
-  const [showModla, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false)
   const {
     register,
     handleSubmit,
@@ -19,13 +19,13 @@ export const Newsletter = () => {
   }
   return (
     <>
-      {showModla && <Modal action={setShowModal} text="You are add to newsletter"/>}
+      {showModal && <Modal action={setShowModal} text="You are add to newsletter"/>}
       <div className="text-center">
         <div className="text-xl">Join our Newsletter</div>
           <form onSubmit={handleSubmit(onSubmit)}>
             <input className="text-black block mx-auto m-1 px-2 rounded-lg" type="text" placeholder="Email..." {...register("email")} ></input>
             <span className="block">{errors?.email?.message}</span>
-            <input className="cursor-pointer bg-gray-50 text-black px-2 rounded-lg mt-2" type="submit" id="submit" value="Subscribe!" ></input>
+            <input className="cursor-pointer bg-gray-50 text-black px-2 rounded-lg mt-2" onClick={() => setShowModal(!showModal)} type="submit" id="submit" value="Subscribe!" ></input>
           </form>
       </div>
     </>
