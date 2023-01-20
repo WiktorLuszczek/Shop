@@ -3,8 +3,8 @@ import { Dispatch, SetStateAction } from "react"
 export const Modal = ({action, text} : {action: Dispatch<SetStateAction<boolean>>, text: string}) => {
     return (
         <>
-            <div className="w-full h-screen absolute top-0 left-0 flex justify-center align-center p-16 bg-gray-300 opacity-50" />
-            <div className="w-1/3 h-50 absolute top-1/4 left-1/3 bg-white shadow-2xl p-5 rounded-xl">
+            <div className="w-full h-full fixed top-0 left-0 flex justify-center align-center p-16 bg-gray-300 opacity-50" />
+            <div className="w-1/3 h-50 fixed top-1/4 left-1/3 bg-white shadow-2xl p-5 rounded-xl">
                 <h3 className="text-xl font-semibold mb-7">
                     Information
                 </h3>
