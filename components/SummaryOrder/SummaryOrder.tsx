@@ -1,8 +1,8 @@
-import { useOrderContext } from "../../context/OrderContextProvider"
+import { useGetOrderFromOrderContext } from "../../hooks/useGetDataFromOrderContext"
 
 export const SummaryOrder = () => {
-    const {order} = useOrderContext()
-    if(order === null){ 
+    const order = useGetOrderFromOrderContext()
+    if(order.length === 0){ 
         return (
             <div className="w-5/12 m-2">
                 <h2 className="text-3xl font-bold mb-10">Shopping summary</h2>

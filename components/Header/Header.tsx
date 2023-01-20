@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Script from "next/script";
 import { useState } from "react";
-import { useGetOrderFromOrderContext } from "../../hooks/useGetOrderFromOrderContext";
+import { useGetOrderFromOrderContext } from "../../hooks/useGetDataFromOrderContext";
 import { OrderCard } from "../OrderCard/OrderCard";
 import { SearchInput } from "../SearchInput/SearchInput";
 
@@ -14,7 +14,6 @@ export function Header () {
     const toggleOrderBoxOff = () => {
         setHidden('hidden')
     }
-    if(order === null || order === undefined) return null && alert('error context')
     return (
         <>
             <Script src="https://kit.fontawesome.com/0912d2c3f4.js" crossOrigin="anonymous"></Script>

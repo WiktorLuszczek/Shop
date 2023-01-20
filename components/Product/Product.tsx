@@ -19,7 +19,6 @@ export const Product = ({product} : {product: SchemaProductFromGraphQL}) =>  {
     }
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if(addProduct === undefined) return alert('error')
         addProduct(data)
         setShowModal(!showModal)
     }
