@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Script from "next/script";
 import { useState } from "react";
-import { useOrderContext } from "../../context/OrderContextProvider";
+import { useGetOrderFromOrderContext } from "../../hooks/useGetOrderFromOrderContext";
 import { OrderCard } from "../OrderCard/OrderCard";
 import { SearchInput } from "../SearchInput/SearchInput";
 
 export function Header () {
-    const {order} = useOrderContext()
+    const order = useGetOrderFromOrderContext()
     const [hidden, setHidden] = useState('hidden')
     const toggleOrderBoxOn = () => {
         setHidden('')
