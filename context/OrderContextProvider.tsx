@@ -4,10 +4,7 @@ import { SchemaProduct, SchemaProductContext } from "../schema/schema";
 export const OrderContext = createContext<SchemaProductContext>(null)
 
 export default function OrderContextProvider (props: { children: React.ReactNode}) {
-    const [order, setOrder] = useState<SchemaProduct[]>(() => {
-      const localData = localStorage.getItem('order')
-      return localData ? JSON.parse(localData) : []
-    })
+    const [order, setOrder] = useState<SchemaProduct[]>([])
     useEffect(() => {
       localStorage.setItem('order', JSON.stringify(order))
     }, [order])
