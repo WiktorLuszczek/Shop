@@ -10,13 +10,11 @@ export const ProductInOrder = ({product, i} : {product: SchemaProduct, i:number}
     const [modalType, setModalType] = useState('')
     const {deleteProduct, changeAmount} = useOrderContext()
     const handleDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, index: number) => {
-        e.preventDefault();
         deleteProduct(index)
         setShowModal(true)
         setModalType('delete')
     }
     const handleAmount = (e: ChangeEvent<HTMLInputElement>,index: number) => {
-        e.preventDefault();
         const value = e.target.value;
         changeAmount(index, value);
         setShowModal(true)

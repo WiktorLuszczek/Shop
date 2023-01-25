@@ -6,8 +6,9 @@ export const OrderContext = createContext<SchemaProductContext>(null)
 export default function OrderContextProvider (props: { children: React.ReactNode}) {
     const [order, setOrder] = useState<SchemaProduct[]>([])
     useEffect(() => {
-      localStorage.setItem('order', JSON.stringify(order))
-    }, [order])
+      const localData = localStorage.getItem('order');
+      if(localData) setOrder(JSON.parse(localData))
+    }, [])
     const addProduct = (product: SchemaProduct) => {
       if(order.find(item => item.id === product.id)){
         const newOrder = order.map(item => {
@@ -17,9 +18,11 @@ export default function OrderContextProvider (props: { children: React.ReactNode
           }
           else return item
         })
+        localStorage.setItem('order', JSON.stringify(newOrder))
         setOrder(newOrder)
       }
       else {
+        localStorage.setItem('order', JSON.stringify([...order, product]))
         setOrder([...order, product])
       }
     }
@@ -28,12 +31,14 @@ export default function OrderContextProvider (props: { children: React.ReactNode
       if(index !== -1){   
         newOrder.splice(index, 1)   
       }
+      localStorage.setItem('order', JSON.stringify(newOrder))
       setOrder(newOrder)
     }
   
     const changeAmount = (index: number, value: string) => {
       const newOrder = order;
       newOrder[index].amount = parseInt(value);
+      localStorage.setItem('order', JSON.stringify(newOrder))
       setOrder(newOrder)
     }
     return (
