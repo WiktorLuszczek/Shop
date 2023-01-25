@@ -44,3 +44,17 @@ export const formSchema = yup.object().shape({
     .email("Please enter the appropriate email address")
     .required(),
 });
+
+export const schemaLocalStorage = 
+yup.array(
+  yup.object().shape({
+    name: yup.string().required(),
+    description: yup.string().required(),
+    id: yup.string().required(),
+    slug: yup.string().required(),
+    image: yup.string().required(),
+    categories: yup.string().required(),
+    amount: yup.number().required(),
+    price: yup.number().required(),
+  })
+)

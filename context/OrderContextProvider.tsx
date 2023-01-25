@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useReducer, useState } from "react";
-import { SchemaProduct, SchemaProductContext } from "../schema/schema";
+import { schemaLocalStorage, SchemaProduct, SchemaProductContext } from "../schema/schema";
+import * as yup from 'yup'
 
 export const OrderContext = createContext<SchemaProductContext>(null)
 
@@ -7,7 +8,13 @@ export default function OrderContextProvider (props: { children: React.ReactNode
     const [order, setOrder] = useState<SchemaProduct[]>([])
     useEffect(() => {
       const localData = localStorage.getItem('order');
-      if(localData) setOrder(JSON.parse(localData))
+      if(localData) {
+        schemaLocalStorage.isValid(JSON.parse(localData))
+        .then(res => {
+          if(res) setOrder(JSON.parse(localData))
+          else localStorage.setItem('order', JSON.stringify([]))
+        })
+      }
     }, [])
     const addProduct = (product: SchemaProduct) => {
       if(order.find(item => item.id === product.id)){
