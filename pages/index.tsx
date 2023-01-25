@@ -4,7 +4,6 @@ import { GET_PRODUCTS } from '../apollo/apollo-client';
 import { Card } from '../components/Card/Card';
 import { Spinner } from '../components/Spinner/Spinner';
 
-
 export default function Home() {
   const {data, loading, error} = useQuery(GET_PRODUCTS)
   if(error) return <h1>Error while downloading data</h1>
@@ -21,3 +20,4 @@ export default function Home() {
     </div>
   )
 }
+

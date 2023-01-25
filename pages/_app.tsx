@@ -5,8 +5,9 @@ import client from '../apollo/apollo-client'
 import { Layout } from '../components/Layout/Layout'
 import { Header } from '../components/Header/Header'
 import { Footer } from '../components/Footer/Footer'
-import OrderContextProvider from "../context/OrderContextProvider"
+import OrderContextProvider, { useOrderContext } from "../context/OrderContextProvider"
 import Head from 'next/head'
+
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -17,13 +18,13 @@ export default function App({ Component, pageProps }: AppProps) {
           <link rel="icon" href="/favicon.ico" />
         </Head>
       <ApolloProvider client={client} >
-          <OrderContextProvider>
-            <Header />
-            <Layout >
-              <Component {...pageProps} />
-            </Layout>
-          </OrderContextProvider>
-        <Footer />
+        <OrderContextProvider>
+          <Header />
+          <Layout >
+            <Component {...pageProps} />
+          </Layout>
+          <Footer />
+        </OrderContextProvider>
       </ApolloProvider>
     </>
   )

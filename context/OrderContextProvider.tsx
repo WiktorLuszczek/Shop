@@ -1,11 +1,16 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
 import { SchemaProduct, SchemaProductContext } from "../schema/schema";
 
 export const OrderContext = createContext<SchemaProductContext>(null)
 
 export default function OrderContextProvider (props: { children: React.ReactNode}) {
-    const [order, setOrder] = useState<SchemaProduct[]>([])
-  
+    const [order, setOrder] = useState<SchemaProduct[]>(() => {
+      const localData = localStorage.getItem('order')
+      return localData ? JSON.parse(localData) : []
+    })
+    useEffect(() => {
+      localStorage.setItem('order', JSON.stringify(order))
+    }, [order])
     const addProduct = (product: SchemaProduct) => {
       if(order.find(item => item.id === product.id)){
         const newOrder = order.map(item => {

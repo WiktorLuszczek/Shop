@@ -15,7 +15,7 @@ export default function OrderPage() {
                     : 
                         <ul>
                             {order.map((product: SchemaProduct, i: number) =>
-                            <ProductInOrder product={product} i={i} />)}
+                            <ProductInOrder key={product.id} product={product} i={i} />)}
                         </ul>
                 }
             </div>
