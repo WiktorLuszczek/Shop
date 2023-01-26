@@ -3,7 +3,7 @@ import { Newsletter } from "../Newsletter/Newsletter";
 
 export function Footer () {
     return (
-        <footer className="grid grid-cols-3 bg-black py-10 px-20 text-white">
+        <footer className="grid grid-cols-3 bg-black py-10 px-20 text-white min-w-minWidth max-w-maxWidth mx-auto">
             <ul className="mt-3 pt-4">
                 <li className="inline"><a href="http://www.facebook.com" target="_blank"><span className= "mx-1 text-4xl fa-brands fa-facebook-f" /></a></li>
                 <li className="inline"><a href="http://www.instagram.com" target="_blank"><span className="mx-1 text-4xl fa-brands fa-instagram" /></a></li>

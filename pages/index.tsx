@@ -11,12 +11,10 @@ export default function Home() {
   const {products} = data;
   return (
     <div>
-      <div className='my-12'>
             <h1 className='font-bold text-3xl my-5'>Products</h1>
-            <div className='grid grid-cols-3 gap-10'>
+            <div className='grid grid-cols-3 gap-10 mx-auto'>
               {products.map((product: SchemaProductFromGraphQL, i: number) => <Card key={i} data={product}/>)}
             </div>
-      </div>
     </div>
   )
 }
