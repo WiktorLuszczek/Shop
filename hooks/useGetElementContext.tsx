@@ -1,33 +1,33 @@
-import { useOrderContext } from "../context/OrderContextProvider"
+import { useOrderContext } from '../context/OrderContextProvider';
 
 export const useGetOrderFromOrderContext = () => {
-    const { order } = useOrderContext()
-    if(order === null){
+    const { order } = useOrderContext();
+    if (order === null) {
         throw new Error("Don't find order on context");
     }
-    return order
-}
+    return order;
+};
 
 export const useGetAddProductFromOrderContext = () => {
-    const { addProduct } = useOrderContext()
-    if(addProduct === null){
+    const { addProduct } = useOrderContext();
+    if (addProduct === null) {
         throw new Error("Don't find order on context");
     }
-    return addProduct
-}
+    return addProduct;
+};
 
 export const useGetDeleteProductFromOrderContext = () => {
-    const { deleteProduct } = useOrderContext()
-    if(deleteProduct === null){
+    const { deleteProduct } = useOrderContext();
+    if (deleteProduct === null) {
         throw new Error("Don't find order on context");
     }
-    return deleteProduct
-}
+    return deleteProduct;
+};
 
 export const useGetChangeAmountFromOrderContext = () => {
-    const { changeAmount } = useOrderContext()
-    if(changeAmount === null){
+    const { changeAmount } = useOrderContext();
+    if (changeAmount === null) {
         throw new Error("Don't find order on context");
     }
-    return changeAmount
-}
+    return changeAmount;
+};

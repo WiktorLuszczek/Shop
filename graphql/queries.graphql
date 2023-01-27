@@ -1,15 +1,15 @@
 query Assets {
-  products {
-    name
-    price
-    slug
-    id
-    description
-    categories {
-      name
+    products {
+        name
+        price
+        slug
+        id
+        description
+        categories {
+            name
+        }
+        images {
+            url
+        }
     }
-    images {
-      url
-    }
-  }
 }

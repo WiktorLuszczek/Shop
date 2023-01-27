@@ -1,22 +1,22 @@
 {
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaVersion": 2021,
-    "project": "./tsconfig.json"
-  },
-  "plugins": ["@typescript-eslint"],
-  "extends": [
-    "plugin:@typescript-eslint/recommended",
-    "eslint:recommended",
-    "plugin:import/recommended"
-  ],
-  "rules": {
-    "import/no-default-export": "error",
-    "import": "no-unresolved",
-    "no-console": "warn",
-    "@typescript-eslint/consistent-type-imports": "error"
-  },
-  "ignorePatterns": ["commitlint.config.js"]
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 2021,
+        "project": "./tsconfig.json"
+    },
+    "plugins": ["@typescript-eslint"],
+    "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "eslint:recommended",
+        "plugin:import/recommended"
+    ],
+    "rules": {
+        "import/no-default-export": "error",
+        "import": "no-unresolved",
+        "no-console": "warn",
+        "@typescript-eslint/consistent-type-imports": "error"
+    },
+    "ignorePatterns": ["commitlint.config.js"]
 }
