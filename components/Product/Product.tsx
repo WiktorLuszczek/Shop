@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { FormEvent, useContext, useState } from "react";
-import { useOrderContext } from "../../context/OrderContextProvider";
+import { FormEvent, useState } from "react";
+import { useGetAddProductFromOrderContext } from "../../hooks/useGetElementContext";
 import { SchemaProduct, SchemaProductFromGraphQL } from "../../schema/schema";
 import { Modal } from "../Modal/Modal";
 
 export const Product = ({product} : {product: SchemaProductFromGraphQL}) =>  {
-    const {addProduct} = useOrderContext()
+    const addProduct = useGetAddProductFromOrderContext()
     const [showModal, setShowModal] = useState(false)
     const data: SchemaProduct = {
         name: product.name,

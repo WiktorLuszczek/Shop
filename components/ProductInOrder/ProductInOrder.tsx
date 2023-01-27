@@ -2,28 +2,29 @@ import Link from "next/link";
 import { ChangeEvent, useState } from "react";
 import { SchemaProduct } from "../../schema/schema";
 import Image from "next/image";
-import { useOrderContext } from "../../context/OrderContextProvider";
 import { Modal } from "../Modal/Modal"
+import { useGetChangeAmountFromOrderContext, useGetDeleteProductFromOrderContext } from "../../hooks/useGetElementContext";
 
 export const ProductInOrder = ({product, i} : {product: SchemaProduct, i:number}) => {
-    const [showModal, setShowModal] = useState(false)
-    const [modalType, setModalType] = useState('')
-    const {deleteProduct, changeAmount} = useOrderContext()
+    const [showModal, setShowModal] = useState(false);
+    const [modalType, setModalType] = useState('');
+    const deleteProduct = useGetDeleteProductFromOrderContext();
+    const changeAmount = useGetChangeAmountFromOrderContext();
     const handleDelete = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>, index: number) => {
-        deleteProduct(index)
-        setShowModal(true)
-        setModalType('delete')
+        deleteProduct(index);
+        setShowModal(true);
+        setModalType('delete');
     }
     const handleAmount = (e: ChangeEvent<HTMLInputElement>,index: number) => {
         const value = e.target.value;
         changeAmount(index, value);
-        setShowModal(true)
-        setModalType('amount')
+        setShowModal(true);
+        setModalType('amount');
     }
     const handleModal = () => {
-        if(modalType === 'delete') return <Modal action={setShowModal} text="Product has been removed from the order"/>
-        else if(modalType === 'amount') return <Modal action={setShowModal} text="The quantity of products in the order has been changed"/>
-        else null
+        if(modalType === 'delete') return <Modal action={setShowModal} text="Product has been removed from the order"/>;
+        else if(modalType === 'amount') return <Modal action={setShowModal} text="The quantity of products in the order has been changed"/>;
+        else null;
     }
     return(
         <>

@@ -1,4 +1,4 @@
-import { useGetOrderFromOrderContext } from "../../hooks/useGetDataFromOrderContext"
+import { useGetOrderFromOrderContext } from "../../hooks/useGetElementContext"
 
 export const SummaryOrder = () => {
     const order = useGetOrderFromOrderContext()

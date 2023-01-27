@@ -3,8 +3,8 @@ import Link from "next/link";
 import { SchemaProductFromGraphQL } from "../../schema/schema";
 
 export function Card (props: {data: SchemaProductFromGraphQL}) {
-    const {name, price, categories, images, slug} = props.data
-    const {url} = images[0]
+    const { name, price, categories, images, slug } = props.data
+    const { url } = images[0]
     return(
         <Link href={`product/${slug}`}>
             <section className=" hover:bg-gray-100 p-5 rounded-xl">

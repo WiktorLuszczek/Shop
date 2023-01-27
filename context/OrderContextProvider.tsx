@@ -1,6 +1,5 @@
-import { createContext, useContext, useEffect, useReducer, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { schemaLocalStorage, SchemaProduct, SchemaProductContext } from "../schema/schema";
-import * as yup from 'yup'
 
 export const OrderContext = createContext<SchemaProductContext>(null)
 
