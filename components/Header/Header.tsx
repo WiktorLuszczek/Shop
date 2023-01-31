@@ -65,7 +65,7 @@ export function Header() {
                             className="text-5xl fa-regular fa-basket-shopping"
                         ></i>
                         {order.length === 0 ? null : (
-                            <div className="absolute top70 right-9 bg-white w-7 h-7 text-center rounded-full border-solid border-gray-500 border-2 hover:text-gray-500">
+                            <div className="bottom-4 left-7 relative bg-white w-7 h-7 text-center rounded-full border-solid border-gray-500 border-2 hover:text-gray-500">
                                 {order.length}
                             </div>
                         )}

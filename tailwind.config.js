@@ -12,6 +12,9 @@ module.exports = {
         maxWidth: {
             maxWidth: '1500px',
         },
+        minHeight: {
+            minHeight: '380px'
+        },
         extend: {},
     },
     plugins: [],
