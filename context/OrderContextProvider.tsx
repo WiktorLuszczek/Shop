@@ -4,6 +4,7 @@ import {
     SchemaProduct,
     SchemaProductContext,
 } from '../schema/schema';
+import { convertFromLocalStorage } from '../utils/convertFromLocalStorage';
 
 export const OrderContext = createContext<SchemaProductContext>(null);
 
@@ -15,8 +16,8 @@ export default function OrderContextProvider(props: {
         const localData = localStorage.getItem('order');
         if (localData) {
             schemaLocalStorage.isValid(JSON.parse(localData)).then((res) => {
-                if (res) setOrder(JSON.parse(localData));
-                else localStorage.setItem('order', JSON.stringify([]));
+                if (res) setOrder(convertFromLocalStorage(localData));
+                /*else localStorage.setItem('order', JSON.stringify([]));*/
             });
         }
     }, []);
@@ -28,10 +29,10 @@ export default function OrderContextProvider(props: {
                     return item;
                 } else return item;
             });
-            localStorage.setItem('order', JSON.stringify(newOrder));
+            localStorage.setItem('order', JSON.stringify(newOrder.map(item => item.id)));
             setOrder(newOrder);
         } else {
-            localStorage.setItem('order', JSON.stringify([...order, product]));
+            localStorage.setItem('order', JSON.stringify([...order, product].map(item => [item.id, item.amount])));
             setOrder([...order, product]);
         }
     };
@@ -40,14 +41,14 @@ export default function OrderContextProvider(props: {
         if (index !== -1) {
             newOrder.splice(index, 1);
         }
-        localStorage.setItem('order', JSON.stringify(newOrder));
+        localStorage.setItem('order', JSON.stringify(newOrder.map(item => item.id)));
         setOrder(newOrder);
     };
 
     const changeAmount = (index: number, value: string) => {
         const newOrder = order;
         newOrder[index].amount = parseInt(value);
-        localStorage.setItem('order', JSON.stringify(newOrder));
+        localStorage.setItem('order', JSON.stringify(newOrder.map(item => item.id)));
         setOrder(newOrder);
     };
     return (

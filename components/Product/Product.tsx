@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import { FormEvent, useState } from 'react';
 import { useGetAddProductFromOrderContext } from '../../hooks/useGetElementContext';
-import { SchemaProduct, SchemaProductFromGraphQL } from '../../schema/schema';
+import { SchemaProduct } from '../../schema/schema';
 import { Modal } from '../Modal/Modal';
 
-export const Product = ({ product }: { product: SchemaProductFromGraphQL }) => {
+export const Product = ({ product }: { product: SchemaProduct }) => {
     const addProduct = useGetAddProductFromOrderContext();
     const [showModal, setShowModal] = useState(false);
     const data: SchemaProduct = {
@@ -12,8 +12,8 @@ export const Product = ({ product }: { product: SchemaProductFromGraphQL }) => {
         description: product.description,
         id: product.id,
         slug: product.slug,
-        image: product.images[0].url,
-        categories: product.categories[0].name,
+        image: product.image,
+        categories: product.categories,
         amount: 1,
         price: product.price,
     };
@@ -30,7 +30,7 @@ export const Product = ({ product }: { product: SchemaProductFromGraphQL }) => {
             <div className="grid grid-cols-3 gap-5">
                 <Image
                     className="bg-gray-100 px-5 py-10 col-span-2 rounded-lg m-auto"
-                    src={product.images[0].url}
+                    src={product.image}
                     alt="product photo"
                     width={600}
                     height={600}
@@ -39,7 +39,7 @@ export const Product = ({ product }: { product: SchemaProductFromGraphQL }) => {
                     <p className="text-5xl font-medium tracking-wide my-3">
                         {product.name}
                     </p>
-                    <p className="text-xl my-3">{product.categories[0].name}</p>
+                    <p className="text-xl my-3">{product.categories}</p>
                     <p className="text-xl my-3">{product.price} $</p>
                     <form onSubmit={(e) => handleSubmit(e)}>
                         <input

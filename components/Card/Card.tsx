@@ -1,15 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { SchemaProductFromGraphQL } from '../../schema/schema';
+import { SchemaProduct } from '../../schema/schema';
 
-export function Card(props: { data: SchemaProductFromGraphQL }) {
-    const { name, price, categories, images, slug } = props.data;
-    const { url } = images[0];
+export function Card(props: { data: SchemaProduct }) {
+    const { name, price, categories, image, slug } = props.data;
     return (
         <Link href={`product/${slug}`}>
             <section className=" hover:bg-gray-100 p-5 rounded-xl">
                 <Image
-                    src={url}
+                    src={image}
                     alt={`Product ${name}`}
                     width={400}
                     height={400}
@@ -18,7 +17,7 @@ export function Card(props: { data: SchemaProductFromGraphQL }) {
                     <p className="col-span-2">{name}</p>
                     <p className="text-right">{price}$</p>
                     <p className="font-light text-gray-500">
-                        {categories[0].name}
+                        {categories}
                     </p>
                 </div>
             </section>

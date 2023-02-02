@@ -1,3 +1,4 @@
+import { type } from 'os';
 import * as yup from 'yup';
 
 export type SchemaProductFromGraphQL = {
@@ -13,6 +14,9 @@ export type SchemaProductFromGraphQL = {
     }[];
     images: { __typename?: string | undefined; url: string }[];
 };
+export type SchemaDataFromGraphQL = {
+    products: SchemaProductFromGraphQL[]
+}
 export type SchemaProduct = {
     name: string;
     image: string;
