@@ -1,4 +1,3 @@
-import { type } from 'os';
 import * as yup from 'yup';
 
 export type SchemaProductFromGraphQL = {
@@ -34,12 +33,7 @@ export type SchemaProductContext = null | {
     changeAmount: (index: number, value: string) => void;
 };
 
-export const formSchema = yup.object().shape({
-    name: yup
-        .string()
-        .min(3, 'Name must have minimum 3 chars')
-        .max(64, 'Name must have maximum 64 chars')
-        .required(),
+export const newsletterSchema = yup.object().shape({
     email: yup
         .string()
         .email('Please enter the appropriate email address')
@@ -58,3 +52,29 @@ export const schemaLocalStorage = yup.array(
         price: yup.number().required(),
     }),
 );
+export const loginSchema = yup.object().shape({
+    email: yup
+        .string()
+        .email('Please enter the appropriate email address')
+        .required(),
+    password: yup
+        .string()
+        .min(4, 'The password must contain at least 4 characters')
+        .max(64, 'The password can contain up to 64 characters')
+        .required(''),
+});
+
+export const registerSchema = yup.object().shape({
+    email: yup
+        .string()
+        .email('Please enter the appropriate email address')
+        .required(),
+    password: yup
+        .string()
+        .min(4, 'The password must contain at least 4 characters')
+        .max(64, 'The password can contain up to 64 characters')
+        .required(''),
+    confirmPassword: yup
+        .string()
+        .oneOf([yup.ref('password'), null], 'The passwords are not the same '),
+});

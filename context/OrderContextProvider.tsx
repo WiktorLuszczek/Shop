@@ -11,7 +11,6 @@ export default function OrderContextProvider(props: {
     children: React.ReactNode;
 }) {
     const [order, setOrder] = useState<SchemaProduct[]>([]);
-    console.log(order);
     useEffect(() => {
         const localData = localStorage.getItem('order');
         if (localData) {
