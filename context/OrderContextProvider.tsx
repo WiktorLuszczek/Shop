@@ -4,7 +4,6 @@ import {
     SchemaProduct,
     SchemaProductContext,
 } from '../schema/schema';
-import { convertFromLocalStorage } from '../utils/convertFromLocalStorage';
 
 export const OrderContext = createContext<SchemaProductContext>(null);
 
@@ -12,43 +11,45 @@ export default function OrderContextProvider(props: {
     children: React.ReactNode;
 }) {
     const [order, setOrder] = useState<SchemaProduct[]>([]);
+    console.log(order)
     useEffect(() => {
         const localData = localStorage.getItem('order');
         if (localData) {
             schemaLocalStorage.isValid(JSON.parse(localData)).then((res) => {
-                if (res) setOrder(convertFromLocalStorage(localData));
-                /*else localStorage.setItem('order', JSON.stringify([]));*/
+                if (res) setOrder(JSON.parse(localData));
+                else localStorage.setItem('order', JSON.stringify([]));
             });
         }
     }, []);
     const addProduct = (product: SchemaProduct) => {
-        if (order.find((item) => item.id === product.id)) {
+        const existingItem = order.find((item) => item.id === product.id)
+        if (existingItem) {
             const newOrder = order.map((item) => {
-                if (item.id === product.id) {
-                    item.amount++;
-                    return item;
+                if (item.id === existingItem.id) {
+                    return {...item, amount: existingItem.amount + 1};
                 } else return item;
             });
-            localStorage.setItem('order', JSON.stringify(newOrder.map(item => item.id)));
+            localStorage.setItem('order', JSON.stringify(newOrder));
             setOrder(newOrder);
         } else {
-            localStorage.setItem('order', JSON.stringify([...order, product].map(item => [item.id, item.amount])));
+            localStorage.setItem('order', JSON.stringify([...order, product]));
             setOrder([...order, product]);
         }
     };
     const deleteProduct = (index: number) => {
-        const newOrder = order;
-        if (index !== -1) {
-            newOrder.splice(index, 1);
-        }
-        localStorage.setItem('order', JSON.stringify(newOrder.map(item => item.id)));
+        const newOrder = order.filter((item, i) => i !== index )
+        localStorage.setItem('order', JSON.stringify(newOrder));
         setOrder(newOrder);
     };
 
     const changeAmount = (index: number, value: string) => {
-        const newOrder = order;
-        newOrder[index].amount = parseInt(value);
-        localStorage.setItem('order', JSON.stringify(newOrder.map(item => item.id)));
+        const newOrder = order.map((item, i) => {
+            if(index === i){
+                return{...item, amount: parseInt(value)}
+            }
+            else return item
+        })
+        localStorage.setItem('order', JSON.stringify(newOrder));
         setOrder(newOrder);
     };
     return (

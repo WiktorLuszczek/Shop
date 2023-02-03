@@ -1,15 +1,15 @@
-import { useQuery } from '@apollo/client';
-import type { SchemaProduct, SchemaProductFromGraphQL } from '../schema/schema';
-import { GET_PRODUCTS } from '../apollo/apollo-client';
+import type { SchemaProduct } from '../schema/schema';
 import { Card } from '../components/Card/Card';
 import { Spinner } from '../components/Spinner/Spinner';
 import { dataTransformation } from '../utils/dataTransformation';
+import { useAssetsQuery } from '../generated/graphql';
 
 export default function Home() {
-    const { data, loading, error } = useQuery(GET_PRODUCTS);
+    const { data, loading, error } = useAssetsQuery();
     if (error) return <h1>Error while downloading data</h1>;
     if (loading) return <Spinner />;
     const products = dataTransformation(data);
+    if(products === undefined) return
     return (
         <div>
             <h1 className="font-bold text-3xl my-10">Products</h1>
