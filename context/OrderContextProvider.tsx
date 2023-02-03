@@ -11,7 +11,7 @@ export default function OrderContextProvider(props: {
     children: React.ReactNode;
 }) {
     const [order, setOrder] = useState<SchemaProduct[]>([]);
-    console.log(order)
+    console.log(order);
     useEffect(() => {
         const localData = localStorage.getItem('order');
         if (localData) {
@@ -22,11 +22,11 @@ export default function OrderContextProvider(props: {
         }
     }, []);
     const addProduct = (product: SchemaProduct) => {
-        const existingItem = order.find((item) => item.id === product.id)
+        const existingItem = order.find((item) => item.id === product.id);
         if (existingItem) {
             const newOrder = order.map((item) => {
                 if (item.id === existingItem.id) {
-                    return {...item, amount: existingItem.amount + 1};
+                    return { ...item, amount: existingItem.amount + 1 };
                 } else return item;
             });
             localStorage.setItem('order', JSON.stringify(newOrder));
@@ -37,18 +37,17 @@ export default function OrderContextProvider(props: {
         }
     };
     const deleteProduct = (index: number) => {
-        const newOrder = order.filter((item, i) => i !== index )
+        const newOrder = order.filter((item, i) => i !== index);
         localStorage.setItem('order', JSON.stringify(newOrder));
         setOrder(newOrder);
     };
 
     const changeAmount = (index: number, value: string) => {
         const newOrder = order.map((item, i) => {
-            if(index === i){
-                return{...item, amount: parseInt(value)}
-            }
-            else return item
-        })
+            if (index === i) {
+                return { ...item, amount: parseInt(value) };
+            } else return item;
+        });
         localStorage.setItem('order', JSON.stringify(newOrder));
         setOrder(newOrder);
     };

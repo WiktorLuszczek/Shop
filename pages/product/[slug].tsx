@@ -11,7 +11,9 @@ export default function PageProduct() {
     if (loading) return <Spinner />;
     const { slug } = router.query;
     if (data === undefined) return <Spinner />;
-    const product = dataTransformation(data)?.find((product) => product.slug === slug);
+    const product = dataTransformation(data)?.find(
+        (product) => product.slug === slug,
+    );
     if (product === undefined) return <Spinner />;
 
     return <Product product={product} />;

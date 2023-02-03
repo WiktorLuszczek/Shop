@@ -53,7 +53,7 @@ export function Header() {
                         </a>
                     </li>
                 </ul>
-                <div className="ml-20">
+                <div className="ml-20 flex gap-4 justify-center items-center">
                     <Link
                         href={'/orderpage'}
                         className={'hover:text-gray-500'}
@@ -69,6 +69,9 @@ export function Header() {
                                 {order.length}
                             </div>
                         )}
+                    </Link>
+                    <Link href={'/signin'} className="w-16 text-xl">
+                        Sign In
                     </Link>
                 </div>
                 <div

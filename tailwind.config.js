@@ -13,7 +13,7 @@ module.exports = {
             maxWidth: '1500px',
         },
         minHeight: {
-            minHeight: '380px'
+            minHeight: '380px',
         },
         extend: {},
     },

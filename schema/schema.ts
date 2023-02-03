@@ -15,8 +15,8 @@ export type SchemaProductFromGraphQL = {
     images: { __typename?: string | undefined; url: string }[];
 };
 export type SchemaDataFromGraphQL = {
-    products: SchemaProductFromGraphQL[]
-}
+    products: SchemaProductFromGraphQL[];
+};
 export type SchemaProduct = {
     name: string;
     image: string;

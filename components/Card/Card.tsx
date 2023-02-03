@@ -16,9 +16,7 @@ export function Card(props: { data: SchemaProduct }) {
                 <div className="grid grid-cols-3 font-medium">
                     <p className="col-span-2">{name}</p>
                     <p className="text-right">{price}$</p>
-                    <p className="font-light text-gray-500">
-                        {categories}
-                    </p>
+                    <p className="font-light text-gray-500">{categories}</p>
                 </div>
             </section>
         </Link>
