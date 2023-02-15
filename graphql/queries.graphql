@@ -13,3 +13,9 @@ query Assets {
         }
     }
 }
+
+mutation CreateAccount($email: String!, $password: String!) {
+    createAccount(data: { email: $email, password: $password }) {
+        id
+    }
+}
