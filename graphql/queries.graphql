@@ -1,4 +1,4 @@
-query Assets {
+query GetProducts {
     products {
         name
         price

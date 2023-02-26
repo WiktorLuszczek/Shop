@@ -1,14 +1,15 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { ApolloProvider } from '@apollo/client';
-import client from '../apollo/apollo-client';
+import { authorizedClient, client } from '../apollo/apollo-client';
 import { Layout } from '../components/Layout/Layout';
 import { Header } from '../components/Header/Header';
 import { Footer } from '../components/Footer/Footer';
 import OrderContextProvider from '../context/OrderContextProvider';
 import Head from 'next/head';
+import { SessionProvider } from "next-auth/react"
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps: {session, ...pageProps} }: AppProps) {
     return (
         <>
             <Head>
@@ -20,13 +21,17 @@ export default function App({ Component, pageProps }: AppProps) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <ApolloProvider client={client}>
-                <OrderContextProvider>
-                    <Header />
-                    <Layout>
-                        <Component {...pageProps} />
-                    </Layout>
-                    <Footer />
-                </OrderContextProvider>
+                <SessionProvider>
+                    <ApolloProvider client={authorizedClient}>
+                        <OrderContextProvider>
+                            <Header />
+                            <Layout>
+                                <Component {...pageProps} />
+                            </Layout>
+                            <Footer />
+                        </OrderContextProvider>
+                    </ApolloProvider>
+                </SessionProvider>
             </ApolloProvider>
         </>
     );

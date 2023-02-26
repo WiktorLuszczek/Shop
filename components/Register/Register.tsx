@@ -59,7 +59,7 @@ export const Register = () => {
             <input
                 className="text-xl bg-black text-white px-5 py-2 rounded-lg"
                 type={'submit'}
-                value="Sign In"
+                value="Sign Up"
             />
         </form>
     );
