@@ -10,7 +10,6 @@ export const authOptions = {
             password: { type: "password" }
           },
           async authorize(credentials, req) {
-            console.log(credentials, req)
             const user = {
                 id:'1',
                 name: 'J Smith',

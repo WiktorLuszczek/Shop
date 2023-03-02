@@ -1,21 +1,21 @@
 import Image from 'next/image';
 import { FormEvent, useState } from 'react';
 import { useGetAddProductFromOrderContext } from '../../hooks/useGetElementContext';
-import { SchemaProduct } from '../../schema/schema';
+import { SchemaProduct, SchemaProductInOrder } from '../../types/types';
 import { Modal } from '../Modal/Modal';
 
 export const Product = ({ product }: { product: SchemaProduct }) => {
     const addProduct = useGetAddProductFromOrderContext();
     const [showModal, setShowModal] = useState(false);
-    const data: SchemaProduct = {
+    const data: SchemaProductInOrder = {
         name: product.name,
         description: product.description,
         id: product.id,
         slug: product.slug,
         image: product.image,
         categories: product.categories,
-        amount: 1,
         price: product.price,
+        amount: 1
     };
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();

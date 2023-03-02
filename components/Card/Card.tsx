@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { SchemaProduct } from '../../schema/schema';
+import { SchemaProductFromGraphQL } from '../../types/types';
 
-export function Card(props: { data: SchemaProduct }) {
-    const { name, price, categories, image, slug } = props.data;
+export function Card(props: { data: SchemaProductFromGraphQL }) {
+    const { name, price, slug } = props.data;
+    const image = props.data.images[0].url;
+    const categories = props.data.categories[0].name;
     return (
         <Link href={`product/${slug}`}>
             <section className=" hover:bg-gray-100 p-5 rounded-xl">

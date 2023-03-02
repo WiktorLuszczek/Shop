@@ -20,15 +20,24 @@ export type SchemaProduct = {
     name: string;
     image: string;
     description: string;
-    amount: number;
     id: string;
     slug: string;
     categories: string;
     price: number;
 };
+export type SchemaProductInOrder = {
+    name: string;
+    image: string;
+    description: string;
+    id: string;
+    slug: string;
+    categories: string;
+    price: number;
+    amount: number;
+};
 export type SchemaProductContext = null | {
-    order: Array<SchemaProduct> | null;
-    addProduct: (product: SchemaProduct) => void;
+    order: Array<SchemaProductInOrder> | null;
+    addProduct: (product: SchemaProductInOrder) => void;
     deleteProduct: (index: number) => void;
     changeAmount: (index: number, value: string) => void;
 };

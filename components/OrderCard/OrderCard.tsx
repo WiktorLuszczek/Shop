@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { useGetOrderFromOrderContext } from '../../hooks/useGetElementContext';
-import { SchemaProduct } from '../../schema/schema';
+import { SchemaProduct } from '../../types/types';
 
 export const OrderCard = () => {
     const order = useGetOrderFromOrderContext();

@@ -1,7 +1,7 @@
 import { ProductInOrder } from '../../components/ProductInOrder/ProductInOrder';
 import { SummaryOrder } from '../../components/SummaryOrder/SummaryOrder';
 import { useGetOrderFromOrderContext } from '../../hooks/useGetElementContext';
-import { SchemaProduct } from '../../schema/schema';
+import { SchemaProduct } from '../../types/types';
 
 export default function OrderPage() {
     const order = useGetOrderFromOrderContext();

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { newsletterSchema } from '../../schema/schema';
+import { newsletterSchema } from '../../types/types';
 import { Modal } from '../Modal/Modal';
 
 export const Newsletter = () => {

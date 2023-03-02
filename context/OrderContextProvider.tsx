@@ -3,14 +3,15 @@ import {
     schemaLocalStorage,
     SchemaProduct,
     SchemaProductContext,
-} from '../schema/schema';
+    SchemaProductInOrder,
+} from '../types/types';
 
 export const OrderContext = createContext<SchemaProductContext>(null);
 
 export default function OrderContextProvider(props: {
     children: React.ReactNode;
 }) {
-    const [order, setOrder] = useState<SchemaProduct[]>([]);
+    const [order, setOrder] = useState<SchemaProductInOrder[]>([]);
     useEffect(() => {
         const localData = localStorage.getItem('order');
         if (localData) {
@@ -20,7 +21,7 @@ export default function OrderContextProvider(props: {
             });
         }
     }, []);
-    const addProduct = (product: SchemaProduct) => {
+    const addProduct = (product: SchemaProductInOrder) => {
         const existingItem = order.find((item) => item.id === product.id);
         if (existingItem) {
             const newOrder = order.map((item) => {

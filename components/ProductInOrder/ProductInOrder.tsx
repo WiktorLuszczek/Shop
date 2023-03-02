@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ChangeEvent, useState } from 'react';
-import { SchemaProduct } from '../../schema/schema';
+import { SchemaProduct, SchemaProductInOrder } from '../../types/types';
 import Image from 'next/image';
 import { Modal } from '../Modal/Modal';
 import {
@@ -12,7 +12,7 @@ export const ProductInOrder = ({
     product,
     i,
 }: {
-    product: SchemaProduct;
+    product: SchemaProductInOrder;
     i: number;
 }) => {
     const [showModal, setShowModal] = useState(false);

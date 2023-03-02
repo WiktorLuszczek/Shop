@@ -19,3 +19,19 @@ mutation CreateAccount($email: String!, $password: String!) {
         id
     }
 }
+
+query GetProductBySlug($slug: String!) {
+  product(where: {slug: $slug}) {
+    id
+    name
+    price
+    description
+    slug
+    images {
+      url
+    }
+    categories {
+      name
+    }
+  }
+}

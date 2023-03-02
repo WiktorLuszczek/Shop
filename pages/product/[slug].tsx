@@ -1,20 +1,36 @@
 import { useRouter } from 'next/router';
-import { Product } from '../../components/Product/Product';
-import { Spinner } from '../../components/Spinner/Spinner';
-import { useAssetsQuery } from '../../generated/graphql';
-import { dataTransformation } from '../../utils/dataTransformation';
+import { Product } from 'components/Product/Product';
+import { Spinner } from 'components/Spinner/Spinner';
+import { GetProductBySlugDocument, GetProductBySlugQuery, GetProductBySlugQueryVariables, useGetProductBySlugQuery } from 'generated/graphql';
+import {client} from 'apollo/apollo-client'
 
-export default function PageProduct() {
-    const { data, loading, error } = useAssetsQuery();
-    const router = useRouter();
-    if (error) return <h1>Error while downloading data</h1>;
-    if (loading) return <Spinner />;
-    const { slug } = router.query;
-    if (data === undefined) return <Spinner />;
-    const product = dataTransformation(data)?.find(
-        (product) => product.slug === slug,
-    );
-    if (product === undefined) return <Spinner />;
-
-    return <Product product={product} />;
+import { dataTransformation } from 'utils/dataTransformation';
+import { GetServerSideProps, InferGetServerSidePropsType, InferGetStaticPropsType } from 'next';
+import { SchemaProduct } from 'types/types';
+export const getServerSideProps: GetServerSideProps<GetProductBySlugQuery> = async (context) => {
+    const { slug } = context.query;
+    if(typeof slug !== "string") return {props: {}, notFound: true }
+    const {data} = await client.query<GetProductBySlugQuery, GetProductBySlugQueryVariables>({query: GetProductBySlugDocument, variables: {
+        slug
+    }})
+    return {
+        props: {
+            product: data.product
+        }
+    }
 }
+    export default function PageProduct(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
+        if(!props.product) return <></>
+        const {name, id, description, categories, price, images, slug} = props.product
+        const product: SchemaProduct = {
+            name,
+            id,
+            description,
+            image: images[0].url,
+            categories: categories[0].name,
+            price,
+            slug,
+        }
+
+        return <Product product={product} />;
+    }
