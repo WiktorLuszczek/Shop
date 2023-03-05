@@ -1,7 +1,8 @@
-import { NextApiHandler } from "next";
+import type { NextApiHandler } from "next";
 import * as bcrypt from 'bcrypt'
 import { authorizedClient } from "../../apollo/apollo-client";
-import { CreateAccountDocument, CreateAccountMutation, CreateAccountMutationVariables } from "../../generated/graphql";
+import type { CreateAccountMutation, CreateAccountMutationVariables } from "../../generated/graphql";
+import { CreateAccountDocument } from "../../generated/graphql";
 
 const handler: NextApiHandler = async (req, res) => {
     if(req.method !== 'POST'){

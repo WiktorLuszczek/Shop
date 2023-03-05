@@ -14,8 +14,8 @@ export const Newsletter = () => {
         resolver: yupResolver(newsletterSchema),
     });
     const onSubmit = ({ email }: { email: string }) => {
-        console.log('email to newsletter', email);
         setShowModal(true);
+        return email;
     };
     return (
         <>

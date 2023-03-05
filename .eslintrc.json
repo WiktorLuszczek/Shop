@@ -14,9 +14,17 @@
     ],
     "rules": {
         "import/no-default-export": "error",
-        "import": "no-unresolved",
-        "no-console": "warn",
+        "import/no-unresolved": "off",
+        "no-console": "warn",        
         "@typescript-eslint/consistent-type-imports": "error"
     },
+    "overrides": [
+        {
+            "files": ["pages/**/*.tsx", "pages/**/*.ts"],
+            "rules": {
+              "import/no-default-export": "off"
+            }
+          }
+    ],
     "ignorePatterns": ["commitlint.config.js"]
 }

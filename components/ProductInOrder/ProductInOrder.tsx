@@ -1,12 +1,14 @@
 import Link from 'next/link';
-import { ChangeEvent, useState } from 'react';
-import { SchemaProduct, SchemaProductInOrder } from '../../types/types';
+import type { ChangeEvent} from 'react';
+import React, { useState } from 'react';
+import type { SchemaProductInOrder } from '../../types/types';
 import Image from 'next/image';
 import { Modal } from '../Modal/Modal';
 import {
     useGetChangeAmountFromOrderContext,
     useGetDeleteProductFromOrderContext,
 } from '../../hooks/useGetElementContext';
+
 
 export const ProductInOrder = ({
     product,

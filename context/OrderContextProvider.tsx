@@ -1,9 +1,10 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import type {
+    SchemaProductContext,
+    SchemaProductInOrder} from '../types/types';
 import {
     schemaLocalStorage,
-    SchemaProduct,
-    SchemaProductContext,
-    SchemaProductInOrder,
+    SchemaProduct
 } from '../types/types';
 
 export const OrderContext = createContext<SchemaProductContext>(null);

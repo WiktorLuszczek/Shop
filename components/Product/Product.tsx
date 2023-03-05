@@ -1,7 +1,8 @@
 import Image from 'next/image';
-import { FormEvent, useState } from 'react';
+import type { FormEvent} from 'react';
+import { useState } from 'react';
 import { useGetAddProductFromOrderContext } from '../../hooks/useGetElementContext';
-import { SchemaProduct, SchemaProductInOrder } from '../../types/types';
+import type { SchemaProduct, SchemaProductInOrder } from '../../types/types';
 import { Modal } from '../Modal/Modal';
 
 export const Product = ({ product }: { product: SchemaProduct }) => {

@@ -21,7 +21,7 @@ export default function App({ Component, pageProps: {session, ...pageProps} }: A
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <ApolloProvider client={client}>
-                <SessionProvider>
+                <SessionProvider session={session}>
                     <ApolloProvider client={authorizedClient}>
                         <OrderContextProvider>
                             <Header />

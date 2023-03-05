@@ -19,14 +19,7 @@ export const Register = () => {
         password: string;
         confirmPassword: string;
     }) => {
-        console.log(
-            'email',
-            email,
-            'password',
-            password,
-            'confirm password',
-            confirmPassword,
-        );
+        return {email, password, confirmPassword}
     };
     return (
         <form

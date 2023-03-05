@@ -17,7 +17,7 @@ export const LogIn = () => {
         email: string;
         password: string;
     }) => {
-        console.log('email', email, 'password', password);
+        return {email, password}
     };
     return (
         <form
