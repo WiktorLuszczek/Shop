@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { SchemaProductFromGraphQL } from '../../types/types';
+import type { SchemaProductFromGraphQL } from '../../types/types';
 
 export function Card(props: { data: SchemaProductFromGraphQL }) {
     const { name, price, slug } = props.data;

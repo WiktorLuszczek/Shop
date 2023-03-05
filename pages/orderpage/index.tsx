@@ -1,7 +1,7 @@
 import { ProductInOrder } from '../../components/ProductInOrder/ProductInOrder';
 import { SummaryOrder } from '../../components/SummaryOrder/SummaryOrder';
 import { useGetOrderFromOrderContext } from '../../hooks/useGetElementContext';
-import { SchemaProduct } from '../../types/types';
+import type { SchemaProductInOrder } from '../../types/types';
 
 export default function OrderPage() {
     const order = useGetOrderFromOrderContext();
@@ -13,7 +13,7 @@ export default function OrderPage() {
                     <p>You have no products in your shopping cart</p>
                 ) : (
                     <ul>
-                        {order.map((product: SchemaProduct, i: number) => (
+                        {order.map((product: SchemaProductInOrder, i: number) => (
                             <ProductInOrder
                                 key={product.id}
                                 product={product}

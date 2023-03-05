@@ -1,12 +1,11 @@
-import { useRouter } from 'next/router';
+
 import { Product } from 'components/Product/Product';
-import { Spinner } from 'components/Spinner/Spinner';
-import { GetProductBySlugDocument, GetProductBySlugQuery, GetProductBySlugQueryVariables, useGetProductBySlugQuery } from 'generated/graphql';
+import type { GetProductBySlugQuery, GetProductBySlugQueryVariables } from 'generated/graphql';
+import { GetProductBySlugDocument } from 'generated/graphql';
 import {client} from 'apollo/apollo-client'
 
-import { dataTransformation } from 'utils/dataTransformation';
-import { GetServerSideProps, InferGetServerSidePropsType, InferGetStaticPropsType } from 'next';
-import { SchemaProduct } from 'types/types';
+import type { GetServerSideProps, InferGetServerSidePropsType } from 'next';
+import type { SchemaProduct } from 'types/types';
 export const getServerSideProps: GetServerSideProps<GetProductBySlugQuery> = async (context) => {
     const { slug } = context.query;
     if(typeof slug !== "string") return {props: {}, notFound: true }

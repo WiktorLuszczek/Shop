@@ -9,7 +9,7 @@ export const authOptions = {
             email: { type: "text" },
             password: { type: "password" }
           },
-          async authorize(credentials, req) {
+          async authorize() {
             const user = {
                 id:'1',
                 name: 'J Smith',
