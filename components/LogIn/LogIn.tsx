@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import { loginSchema } from '../../types/types';
 
@@ -17,7 +18,7 @@ export const LogIn = () => {
         email: string;
         password: string;
     }) => {
-        return {email, password}
+        signIn('credentials', {email, password})
     };
     return (
         <form

@@ -8,17 +8,16 @@ const handler: NextApiHandler = async (req, res) => {
     if(req.method !== 'POST'){
         res.status(403).end();
     }
-    const data = JSON.parse(req.body)
-    const { email, password } = data
+    const { email, password } = JSON.parse(req.body)
     const hashedPassword = await bcrypt.hash(password, 12);
-    const responseGraph = await authorizedClient.mutate<CreateAccountMutation, CreateAccountMutationVariables>({
+    const { data } = await authorizedClient.mutate<CreateAccountMutation, CreateAccountMutationVariables>({
         mutation: CreateAccountDocument,
         variables: {
             email,
             password: hashedPassword
         }
     })
-    res.json(responseGraph)
+    res.json(data)
 }
 
 export default handler;

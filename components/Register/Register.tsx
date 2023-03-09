@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { registerSchema } from '../../types/types';
 
@@ -10,22 +11,20 @@ export const Register = () => {
     } = useForm<{ email: string; password: string; confirmPassword: string }>({
         resolver: yupResolver(registerSchema),
     });
-    const onSubmit = ({
-        email,
-        password,
-        confirmPassword,
-    }: {
-        email: string;
-        password: string;
-        confirmPassword: string;
-    }) => {
-        return {email, password, confirmPassword}
-    };
+    const [isRegister, setIsRegister] = useState(false)
+    const onSubmit = handleSubmit(async ({email, password}) => {
+        // eslint-disable-next-line no-undef
+        const res = await fetch('/api/signin', {
+            method: 'POST', 
+            body:JSON.stringify({email, password})})
+        setIsRegister(res.ok)
+    });
     return (
         <form
             className="flex flex-col justify-center items-center border-l min-h-minHeight w-1/2"
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={onSubmit}
         >
+            {isRegister && <div role={'alert'}>Seccess register account!</div>}
             <p className="text-xl">You do not have an account?</p>
             <h2 className="text-3xl font-bold">Register</h2>
             <input
