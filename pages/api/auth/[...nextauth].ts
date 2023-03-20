@@ -13,7 +13,7 @@ export const authOptions:AuthOptions = {
             email: { type: "text" },
             password: { type: "password" }
           },
-          async authorize(credentials, req) {
+          async authorize(credentials) {
             if(!credentials){
               return null;
             }
@@ -23,7 +23,8 @@ export const authOptions:AuthOptions = {
                 email:credentials.email
               }
             })
-              return null
+            if(data.account) return {id: data.account?.id, email: data.account.email}
+            return null
         }})
     ]
 }

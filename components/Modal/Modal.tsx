@@ -11,8 +11,8 @@ export const Modal = ({
         <>
             <div className="w-full h-full fixed top-0 left-0 flex justify-center align-center p-16 bg-gray-300 opacity-50" />
             <div className="w-1/3 h-50 fixed top-1/4 left-1/3 bg-white shadow-2xl p-5 rounded-xl">
-                <h3 className="text-xl font-semibold mb-7">Information</h3>
-                <p className="text-base leading-relaxed space-y-6 mb-6">
+                <h3 className="text-xl font-semibold mb-7 text-black">Information</h3>
+                <p className="text-base leading-relaxed space-y-6 mb-6 text-black">
                     {text}
                 </p>
                 <div className="text-right">
